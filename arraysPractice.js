@@ -30,7 +30,9 @@ var family = ['Tyler', 'Jordyn', 'Ryan', 'Chelsey', 'Ireland'];
 
   //Code Here
 function looper(arr) {
-  arr.forEach(person => alert(person))
+  for (let i = 0; i < arr.length; i++) {
+    alert(arr[i])
+  }
 }
 
 //Next problem
@@ -55,8 +57,13 @@ var nums = [1,2,3,6,22,98,45,23,22,12];
 
   //Code Here
 function evenFinder(nums) {
-  let evens = nums.filter(num => num%2 === 0)
-  return evens
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] % 2 === 1) {
+      nums.splice(i, 1);
+      i--;
+    }
+  }
+  return nums;
 }
 
 //Next problem
@@ -70,7 +77,15 @@ var numbersArray = [1,2,34,54,55,34,32,11,19,17,54,66,13];
 
   //Code Here
 function divider(nums) {
-  return [nums.filter(num => num % 2 === 0), nums.filter(num => num % 2 === 1)]
+  let dividedNums = [[], []];
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] % 2 === 1) {
+      dividedNums[1].push(nums[i]);
+    } else {
+      dividedNums[0].push(nums[i]);
+    }
+  }
+  return dividedNums
 } 
 
 //Next Problem
@@ -87,10 +102,11 @@ var getRandomArbitrary = function() {
   //Code Here
 function finder(arr) {
   let num = getRandomArbitrary();
-  let matches = arr.filter(number => number === num);
-  if (matches.length) {
-    return true;
-  } 
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === num) {
+      return true;
+    }
+  }
   return false;
 }
 
@@ -129,7 +145,13 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
   //Code Here
 function removeItem(list, itemToRemove) {
   if (typeof itemToRemove === 'string') {
-    return list.filter(item => item !== itemToRemove)
+    for (let i = 0; i < list.length; i++) {
+      if (list[i] === itemToRemove) {
+        list.splice(i, 1);
+        i--;
+      }
+    }
+    return list;
   }  
   return [];
 }
@@ -169,10 +191,13 @@ var numbers = [5, '9', 16, 19, '25', '34', 48];
 
   //Code Here
 function addTen(numArr) {
-  return numArr.map(num => {
-    num = +num; 
-    return num += 10
-  }); 
+  let addedTen = [];
+  for (let i = 0; i < numArr.length; i++) {
+    let num = +numArr[i];
+    num += 10;
+    addedTen.push(num);
+  }
+  return addedTen;
 }
 
 
@@ -209,11 +234,13 @@ function longer(arr1, arr2) {
 
   //Code Here
 function both(arr1, arr2) {
-  return arr1.filter(item => {
-    if (arr2.indexOf(item) !== -1) {
-      return item;
+  let bothArr = [];
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr2.indexOf(arr1[i]) !== -1) {
+      bothArr.push(arr1[i]);
     }
-  })
+  }
+  return bothArr;
 }
 
 
@@ -261,9 +288,12 @@ devMountainEmployees = [tyler, cahlan, ryan, colt];
 Loop through your devMountainEmployees until you find cahlan, then remove him from the array.*/
 
   //Code Here
-devMountainEmployees = devMountainEmployees.filter(employee => employee.name !== 'Cahlan');
 
-
+for (let i = 0; i < devMountainEmployees.length; i++) {
+  if (devMountainEmployees[i].name === 'Cahlan') {
+    devMountainEmployees.splice(i, 1);
+  }
+}
 
 //NEXT PROBLEM
 
@@ -309,5 +339,9 @@ objects until you find Tyler's account (use tylermcginnis33@gmail.com to find hi
 Once you find the particular index he's located in, delete him from the array.*/
 
   //Code Here
-users = users.filter(user => user.email !== 'tylermcginnis33@gmail.com')
+for (let i = 0; i < users.length; i++) {
+  if (users[i].email === 'tylermcginnis33@gmail.com') {
+    users.splice(i, 1);
+  }
+}
 //The activity we just did is very much how data works in 'the real world'.
